@@ -2,7 +2,7 @@
 
 ## Overview
 
-PassiveHunger is a Minecraft plugin that deducts saturation/food points of players over time regardless of activity level
+PassiveHunger is a Minecraft plugin that deducts saturation/food points of players over time regardless of activity level.
 
 ## Features
 
@@ -12,9 +12,9 @@ PassiveHunger is a Minecraft plugin that deducts saturation/food points of playe
 
 ## Installation
 
-1. Download `/build/libs/PassiveHunger-v1.0.jar`.
-2. Place the `.jar` file into the `plugins` folder of your Minecraft server.
-3. Restart the server to enable the plugin.
+1. Download `/build/libs/PassiveHunger-v1.0.jar`
+2. Place the `.jar` file into the `plugins` folder of your Minecraft server
+3. Restart the server to enable the plugin
 
 ## Commands
 
@@ -28,9 +28,9 @@ PassiveHunger is a Minecraft plugin that deducts saturation/food points of playe
 
 ## Permissions
 
-| Permission          | Description                                        | Default |
-|---------------------|----------------------------------------------------|---------|
-| `passiveHunger.set` | Allows the player to set other players name color. | `op`    |
+| Permission          | Description                                       | Default |
+|---------------------|---------------------------------------------------|---------|
+| `passiveHunger.set` | Allows the player to set other players name color | `op`    |
 
 ## Configuration
 
@@ -38,22 +38,22 @@ The plugin saves player colors in `playerColors.yml` located in the plugin's dat
 
 ## Dependencies
 
-- Requires Minecraft `1.21+` (API version `1.21`).
-- Uses [Adventure API](https://docs.adventure.kyori.net) for text formatting.
+- Requires Minecraft `1.21+` (API version `1.21`)
+- Uses [Adventure API](https://docs.adventure.kyori.net) for text formatting
 
 ## Development
 
 ### Main Classes
 
 - `PassiveHunger.java` - Manages the plugin lifecycle and passive hunger runnable
-- `SetPassiveHungerIntervalCommand.java` - Handles the `/setpassivehungerinterval` command.
-- `SetPassiveHungerIntervalTabCompleter.java` - Handles tab completion for the `/setpassivehungerinterval` command.
+- `SetPassiveHungerIntervalCommand.java` - Handles the `/setpassivehungerinterval` command
+- `SetPassiveHungerIntervalTabCompleter.java` - Handles tab completion for the `/setpassivehungerinterval` command
 
 ### Building from Source
 
-1. Clone the repository.
+1. Clone the repository
 2. Build using `./gradlew build`
-3. Place the compiled `.jar` into your server's `plugins` folder.
+3. Place the compiled `.jar` into your server's `plugins` folder
 
 ## License
 
