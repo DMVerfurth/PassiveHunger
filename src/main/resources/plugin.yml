@@ -2,3 +2,14 @@ name: PassiveHunger
 version: v1.0
 main: dmvmc.passiveHunger.PassiveHunger
 api-version: 1.21
+
+commands:
+  setPassiveHungerInterval:
+    description: Sets the interval at which food levels are subtracted from players
+    usage: /setPassiveHungerInterval <seconds>
+    permission: passiveHunger.set
+
+permissions:
+  passiveHunger.set:
+    description: Allows the player to set the passive hunger interval
+    default: op

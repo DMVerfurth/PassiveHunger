@@ -2,34 +2,49 @@ package dmvmc.passiveHunger;
 
 
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public final class PassiveHunger extends JavaPlugin {
 
     private int passiveHungerInterval;
+    private BukkitRunnable passiveHungerRunnable;
 
     @Override
     public void onEnable() {
 
+        // Start hunger runnable
         saveDefaultConfig();
-        FileConfiguration config = getConfig();
-        passiveHungerInterval = config.getInt("passive-hunger-interval");
-
+        loadNewConfig();
         startHungerTask();
+
+        // Register command
+        getCommand("setPassiveHungerInterval").setExecutor(new PassiveHungerIntervalCommand(this));
         getLogger().info("PassiveHunger has been enabled with an interval of " + passiveHungerInterval + " seconds.!");
 
     }
 
     @Override
     public void onDisable() {
+        stopHungerTask();
         getLogger().info("PassiveHunger has been disabled!");
+    }
+
+    private void loadNewConfig() {
+        reloadConfig();
+        passiveHungerInterval = getConfig().getInt("passive-hunger-interval");
+    }
+
+    private void stopHungerTask() {
+        if (passiveHungerRunnable != null) {
+            passiveHungerRunnable.cancel();
+        }
     }
 
     private void startHungerTask() {
 
-        BukkitRunnable passiveHungerRunnable = new BukkitRunnable() {
+        // Create new runnable to periodically decrement player food
+        passiveHungerRunnable = new BukkitRunnable() {
 
             @Override
             public void run() {
@@ -49,8 +64,15 @@ public final class PassiveHunger extends JavaPlugin {
 
         };
 
+        // Set runnable timer to config interval
         passiveHungerRunnable.runTaskTimer(this, passiveHungerInterval * 20L, passiveHungerInterval * 20L);
 
+    }
+
+    public void restartHungerTask() {
+        loadNewConfig();
+        stopHungerTask();
+        startHungerTask();
     }
 
 }
