@@ -1,0 +1,4 @@
+name: PassiveHunger
+version: v1.0
+main: dmvmc.passiveHunger.PassiveHunger
+api-version: 1.21
