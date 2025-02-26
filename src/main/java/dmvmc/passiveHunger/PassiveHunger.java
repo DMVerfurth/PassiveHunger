@@ -18,9 +18,10 @@ public final class PassiveHunger extends JavaPlugin {
         loadNewConfig();
         startHungerTask();
 
-        // Register command
-        getCommand("setPassiveHungerInterval").setExecutor(new PassiveHungerIntervalCommand(this));
-        getLogger().info("PassiveHunger has been enabled with an interval of " + passiveHungerInterval + " seconds.!");
+        // Register command and tab completer
+        getCommand("setPassiveHungerInterval").setExecutor(new SetPassiveHungerIntervalCommand(this));
+        getCommand("setPassiveHungerInterval").setTabCompleter(new SetPassiveHungerIntervalTabCompleter());
+        getLogger().info("PassiveHunger has been enabled with an interval of " + passiveHungerInterval + " seconds!");
 
     }
 
@@ -31,11 +32,13 @@ public final class PassiveHunger extends JavaPlugin {
     }
 
     private void loadNewConfig() {
+        // Update passive hunger interval from config file
         reloadConfig();
         passiveHungerInterval = getConfig().getInt("passive-hunger-interval");
     }
 
     private void stopHungerTask() {
+        // Cancel hunger runnable if running
         if (passiveHungerRunnable != null) {
             passiveHungerRunnable.cancel();
         }

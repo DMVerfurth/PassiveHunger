@@ -7,10 +7,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public class PassiveHungerIntervalCommand implements CommandExecutor {
+public class SetPassiveHungerIntervalCommand implements CommandExecutor {
 
     private final PassiveHunger plugin;
-    public PassiveHungerIntervalCommand(PassiveHunger plugin) {
+    public SetPassiveHungerIntervalCommand(PassiveHunger plugin) {
         this.plugin = plugin;
     }
 
